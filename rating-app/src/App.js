@@ -11,7 +11,6 @@ class App extends Component{
       userInput: "",
       text: [],
       disabled: true,
-      stars: 0
     };
     
   }
@@ -52,7 +51,6 @@ class App extends Component{
       btnYorum={this.btnYorum}
       text={this.state.text}
       disabled = {this.state.disabled}
-      stars = {this.state.stars}
       />
       
     </div>

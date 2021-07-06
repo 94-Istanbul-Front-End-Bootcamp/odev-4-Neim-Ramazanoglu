@@ -6,9 +6,9 @@ const List = ({ userInput, onInputChange, btnYorum, text,disabled, stars }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-  let x = 0;
+  const [editing, setEditing] = useState(0);
   const ratingChanged = (newRating) => {
-        stars= newRating
+        setEditing(newRating);
   };
   return (
     <div>
@@ -23,7 +23,7 @@ const List = ({ userInput, onInputChange, btnYorum, text,disabled, stars }) => {
           );
         })}
         <input type="text" value={userInput} onChange={onInputChange} />
-        <h3>{stars}</h3>
+        <h3>{editing}</h3>
         <div>
           <ReactStars
             count={5}
