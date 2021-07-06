@@ -31,6 +31,7 @@ const List = () => {
   return (
     <div>
       <form className="input" onSubmit={handleSubmit}>
+      
         <h3>{text.length === 0 ? "Henüz hiç yorum yok." : ""}</h3>
         {text.map((a, i) => {
           return (
@@ -40,17 +41,15 @@ const List = () => {
             </div>
           );
         })}
-        <input type="text" value={userInput} onChange={onInputChange} />
-        <h3>{editing}</h3>
-        <div>
-          <ReactStars
+        <input type="text" value={userInput} onChange={onInputChange} /><br></br>
+        <div className="stars">
+      <ReactStars
             count={5}
             onChange={(ratingChanged)}
             size={40}
             activeColor="#ffd700"
           />
-        </div>
-
+            </div><br></br>
         <button onClick={btnYorum} disabled={disabled}>Gönder</button>
       </form>
     </div>
