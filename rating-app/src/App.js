@@ -2,6 +2,7 @@ import './App.css';
 import Yorum from './components/Yorum/Yorum'
 import List from './components/ListComp/List';
 import  { Component } from 'react';
+
    
 class App extends Component{
   constructor(props) {
@@ -9,23 +10,38 @@ class App extends Component{
     this.state = {
       userInput: "",
       text: [],
+      disabled: true,
+      stars: 0
     };
+    
   }
   onInputChange = (e) => {
+    debugger;
+    
     const newVal = e.target.value;
     this.setState({
       userInput: newVal,
     });
+    if (newVal.length >= 3 ) this.state.disabled=false;
+    else this.state.disabled=true;
   };
-
+   
   btnYorum =(e) => {
-    debugger;
-    this.setState({
+    
+    this.setState(
+      {
       text: [...this.state.text, this.state.userInput],
       
-   
-    });
+    },
+    () => {
+      this.setState({
+        userInput: "",
+      });
+    })
   };
+
+
+  
   render() {
   return (
     <div className="App">
@@ -35,8 +51,10 @@ class App extends Component{
       onInputChange={this.onInputChange}
       btnYorum={this.btnYorum}
       text={this.state.text}
+      disabled = {this.state.disabled}
+      stars = {this.state.stars}
       />
-
+      
     </div>
   );
 }

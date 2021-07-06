@@ -1,25 +1,42 @@
+import ReactStars from "react-rating-stars-component";
+import React, { useState } from 'react';
 
-const List = ({ userInput, onInputChange, btnYorum, text }) => {
-    const handleSubmit = (event) => {
-      event.preventDefault();
-    };
-    
-    return(
-        <form className="input" onSubmit={handleSubmit}>
-             {text.map((a, i) => {     
-           console.log("Entered");                 
-           return (<div><h1>{a}</h1><br/></div>)
+import "./List.css";
+const List = ({ userInput, onInputChange, btnYorum, text,disabled, stars }) => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+  let x = 0;
+  const ratingChanged = (newRating) => {
+        stars= newRating
+  };
+  return (
+    <div>
+      <form className="input" onSubmit={handleSubmit}>
+        <h3>{text.length === 0 ? "Henüz hiç yorum yok." : ""}</h3>
+        {text.map((a, i) => {
+          return (
+            <div>
+              <h1>{a}</h1>
+              <br />
+            </div>
+          );
         })}
-            <input
-        type="text"
-        value={userInput}
-        onChange={onInputChange}
-        />
-            <button onClick={btnYorum}>Gönder</button>
-        </form>
-        
-        
-    ) 
-}
+        <input type="text" value={userInput} onChange={onInputChange} />
+        <h3>{stars}</h3>
+        <div>
+          <ReactStars
+            count={5}
+            onChange={(ratingChanged)}
+            size={40}
+            activeColor="#ffd700"
+          />
+        </div>
+
+        <button onClick={btnYorum} disabled={disabled}>Gönder</button>
+      </form>
+    </div>
+  );
+};
 
 export default List;
