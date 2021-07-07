@@ -4,7 +4,7 @@ function Yorum() {
 
   return (
     <div className="App">
-      <h1>Merhaba</h1>
+      <h1>Yorumlar</h1>
     </div>
   );
 }

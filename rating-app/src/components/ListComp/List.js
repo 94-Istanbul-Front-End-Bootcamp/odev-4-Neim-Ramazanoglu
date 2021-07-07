@@ -28,6 +28,7 @@ const List = () => {
     setUserInput("");
     //
   };
+
   return (
     <div>
       <form className="input" onSubmit={handleSubmit}>
@@ -35,13 +36,22 @@ const List = () => {
         <h3>{text.length === 0 ? "Henüz hiç yorum yok." : ""}</h3>
         {text.map((a, i) => {
           return (
-            <div>
-              <h1>{a}</h1>
+            <div >
+              <p>{a}</p>
+              <p className="List"><ReactStars
+            count={5}
+            onChange={(ratingChanged)}
+            size={30}
+            activeColor="#ffd700"
+            value={editing}
+          /></p>
               <br />
             </div>
           );
         })}
+       
         <input type="text" value={userInput} onChange={onInputChange} /><br></br>
+        
         <div className="stars">
       <ReactStars
             count={5}
