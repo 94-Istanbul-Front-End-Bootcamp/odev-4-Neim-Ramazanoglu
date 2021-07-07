@@ -1,36 +1,22 @@
 import ReactStars from "react-rating-stars-component";
+import React from "react";
 
 import "./List.css";
 
 function List(props) {
-  //   const handleSubmit = (event) => {
-  //     event.preventDefault();
-  //   };
-  // const [editing, setEditing] = useState(0);
-  const { handleComment, ratingChanged, yorum, comments } = props;
 
-  //   const [userInput, setUserInput] = useState("");
-  //   const onInputChange = (e) => {
-  //     const newVal = e.target.value;
-  //     setUserInput(newVal);
+  const { comments } = props;
 
-  //   };
 
-  //  const [text, setText] = useState([]);
-  //  const btnYorum =(e) => {
-  //     setText([...text, userInput])
-  //     setUserInput("");
-  //     //
-  //   };
 
   return (
     <div>
       <ul>
         <h3>{comments.length === 0 ? "Henüz hiç yorum yok." : ""}</h3>
-        {comments.map((comment) => {
+        {props.comments.map((comment, index) => {
           return (
-            <div>
-              <li key={comment.id}>{comment.text}</li>
+            <div key={comment.id}>
+              <li >{comment.text}</li>
               <li className="List">
                 <ReactStars
                   count={5}
@@ -45,19 +31,7 @@ function List(props) {
           );
         })}
       </ul>
-      <input type="text" onChange={yorum} id="yorum" />
-      <br></br>
-
-      <div className="stars">
-        <ReactStars
-          count={5}
-          onChange={ratingChanged}
-          size={40}
-          activeColor="#ffd700"
-        />
-      </div>
-      <br></br>
-      <button onClick={handleComment}>Gönder</button>
+     
     </div>
   );
 }
